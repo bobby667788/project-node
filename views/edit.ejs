@@ -1,0 +1,24 @@
+<% include _layout/header%>
+  <% include _layout/editpar%>
+  <% include _layout/footer%>
+<script>
+    
+        var optionsVal = document.getElementById('sel1');
+        var input = document.getElementById('cat1');
+
+        optionsVal.onclick = function(){
+        setVal(this);
+        };
+        $("#authput").keyup(function(){
+        update();
+        });
+
+        function update() {
+        $("#authfill").val($('#authput').val());
+        }
+        
+        function setVal(selectedVal){
+         input.value = selectedVal.value;
+        }
+    
+    </script>

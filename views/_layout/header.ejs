@@ -1,0 +1,67 @@
+  <html>
+ <head>
+ 	<title>Blog Page</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" type="image/png" href="../../images/icons/favicon.ico"/>
+	<link rel="stylesheet" type="text/css" href="../../vendor/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="../../fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="../../fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+	<link rel="stylesheet" type="text/css" href="../../vendor/animate/animate.css">
+	<link rel="stylesheet" type="text/css" href="../../vendor/css-hamburgers/hamburgers.min.css">
+	<link rel="stylesheet" type="text/css" href="../../vendor/select2/select2.min.css">
+    <link rel="stylesheet" type="text/css" href="../../css/util.css">
+	<link rel="stylesheet" type="text/css" href="../../css/main.css">
+	<link rel="stylesheet" type="text/css" href="../../css/register.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+
+ </head>
+
+<body>
+ <nav class="navbar navbar-expand-md fixed-top bg-dark navbar-dark">
+  <!-- Brand -->
+  <a class="navbar-brand" href="/">Flutur</a>
+
+  <!-- Toggler/collapsibe Button -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <!-- Navbar links -->
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+       <% if (user) { %>
+        <a class="nav-link" href="/logout">Hi,<%=user.username%> Logout</a>
+        <% } else { %>
+        <a class="nav-link" href="/login">Already Have Account?</a>
+        <% } %>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+      </li>
+    </ul>
+     <% if (user && ishome) { %>
+    <ul class="nav navbar-nav navbar-right">
+      <li style="margin-left:70px;"><i style="padding:6px;"class="fa fa-user fa" aria-hidden="true"></i><a href="posts/<%=user._id%>">See your posts</a></li>
+    </ul>
+    <% } %>
+  </div>
+</nav> 
+<br><br>
+<div class="container">
+    <%- messages('messages', locals) %>
+    <% if(errors) {%>
+        <% errors.forEach((error)=>{%>
+        <div class="alert alert-danger">
+            <%=error.msg%>
+        </div>
+        
+       <% }); %>
+    
+    <% } %>
+    
+</div>

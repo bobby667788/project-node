@@ -1,0 +1,113 @@
+<div style=" background: url(../../images/pro.jpg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;">
+<header style="margin:2px auto;">
+ <% if(user.admin){%>}
+ <br><br><center><h1>Welcome Admin here are all the posted blogs</h1></center><br><br>
+ <%}else{%>}
+ <br><br><center><h1>Here are all the blogs posted by you</h1></center><br><br>
+ <%}%>
+    <div class="container" style="margin-top:35px" style="background-image: url('../images/bg-01.jpg');">
+        <h4>Select Number of Rows</h4>
+        <div class="form-group">
+            <select name="state" id="maxRows" class="form-control" style="width:150px;">
+               <option value="5000">Show All</option>
+                <option value="5">5</option>
+                <option value="10">10</option>
+                <option value="15">15</option>
+                <option value="20">20</option>
+                <option value="50">50</option>
+                <option value="75">75</option>
+                <option value="100">100</option>
+                
+            </select>
+        </div>
+        <table id="mytable" class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>AuthorName</th>
+                    <th>Category</th>
+                    <th>Blogtitle</th>
+                    <th>Tag</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                    <th>View</th>
+                </tr>
+            </thead>
+  
+   <%posts.forEach(function(post){%>
+    
+                          <tbody>
+                <tr><td><%=post.authname%></td><td><%=post.categoryname%></td><td><%=post.blogtitle%></td><td><%=post.tag%></td><td> <a href="edit/<%=post._id%>" class="btn btn-info btn-rounded">Edit</a></td><td>             <a href="delete/<%=post._id%>" class="check btn btn-danger btn-rounded">Delete</a></td><td>             <a href="viewblog/<%=post._id%>" class="btn btn-success btn-rounded">View</a></td></tr>
+
+            </tbody>
+       
+        <%});%>
+          </table>
+          <br>
+           <div class="pagination-container" style="padding:5px;">
+            <nav>
+                <ul class="pagination"></ul>
+            </nav>
+        </div>    
+    </div>
+                      
+    <br>
+    </header></div>
+
+    <script src="../../vendor/jquery/jquery-3.2.1.min.js"></script>
+	<script src="../../vendor/bootstrap/js/bootstrap.min.js"></script>
+	<script>
+        $('a.check').on('click',function(){
+           if(!confirm('Are you sure?')) 
+               return false;
+        });
+    var table = '#mytable'
+    $('#maxRows').on('change', function(){
+        $('.pagination').html('')
+        var trnum = 0
+        var maxRows = parseInt($(this).val())
+        var totalRows = $(table+' tbody tr').length
+        $(table+' tr:gt(0)').each(function(){
+            trnum++
+            if(trnum > maxRows){
+                $(this).hide()
+            }
+            if(trnum <= maxRows){
+                $(this).show()
+            }
+        })
+        if(totalRows > maxRows){
+            var pagenum = Math.ceil(totalRows/maxRows)
+            for(var i=1;i<=pagenum;){
+                $('.pagination').append('<li style="padding:5px;color:blue;" data-page="'+i+'">\<span>'+ i++ +'<span class="sr-only">(current)</span></span>\</li>').show()
+            }
+        }
+        $('.pagination li:first-child').addClass('active')
+        $('.pagination li').on('click',function(){
+            var pageNum = $(this).attr('data-page')
+            var trIndex = 0;
+            $('.pagination li').removeClass('active')
+            $(this).addClass('active')
+            $(table+' tr:gt(0)').each(function(){
+                trIndex++
+                if(trIndex > (maxRows*pageNum) || trIndex <= ((maxRows*pageNum)-maxRows)){
+                    $(this).hide()
+                } else{
+                    $(this).show()
+                }
+            })
+        })
+    })
+    $(function(){
+
+        var id = 0;
+        $('table tr:gt(0)').each(function(){
+            id++
+
+        })
+    })
+    </script>
+

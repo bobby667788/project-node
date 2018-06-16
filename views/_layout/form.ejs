@@ -1,0 +1,139 @@
+
+	<div class="container-contact100" style="background-image: url('images/bg-01.jpg');">
+		<div class="wrap-contact100">
+			<form class="contact100-form validate-form" method="post" action="/<%=user._id%>">
+				<span class="contact100-form-title">
+					Please Provide These Details
+				</span>
+              
+				<div class="wrap-input100 rs1-wrap-input100" data-validate="Name is required">
+					<span class="label-input100">Please Provide your name *</span>
+					<input class="input100" type="text" name="authname" id="authput" placeholder="Enter your name">
+				</div>
+                
+				<div class="wrap-input100 rs1-wrap-input100" data-validate="Blog title is required">
+					<span class="label-input100">Please Provide your Blog Title *</span>
+					<input class="input100" type="text" name="blogtitle" id="t2" placeholder="Enter your Blog Title">
+				</div>
+               
+                <div class="form-group">
+                      <label for="sel1">Select Category</label>
+                      <select class="form-control" name="category" id="sel1">
+                        <option value="Game">Game</option>
+                        <option value="History">History</option>
+                        <option value="Education">Education</option>
+                        <option value="Sports">Sports</option>
+                      </select>
+                </div> 
+              
+                <div class="form-group">
+                  <label for="sel1">Select Tag</label>
+                  <select class="form-control" name="tag" id="sel2">
+                    <option value="India Stories">India Stories</option>
+                    <option value="Entertainment">Entertainment</option>
+                    <option value="World Stories">World Stories</option>
+                    <option value="Celebrity">Celebrity</option>
+                  </select>
+                </div> 
+                <br><br><br><br>
+               
+               <div class="wrap-input100 rs1-wrap-input100 " data-validate="Name is required">
+					<span class="label-input100">Category Name</span>
+					<input class="input100" type="text" name="catname" id="cat1" placeholder="Name of the category" value="">
+				</div>
+				<div class="wrap-input100 rs1-wrap-input100 " data-validate="Blog title is required">
+					<span class="label-input100">Please Provide a unique Blog ID *</span>
+					<input class="input100" type="text" name="blogid" id="t2" placeholder="Enter your Blog Title">
+				</div>
+			    <label class="file-upload-container" for="file-upload">
+                    <input id="file-upload" type="file" style="display:none;">
+                    Select an Image
+                  </label>
+
+				<div class="wrap-input100 " style="margin-top:40px;">
+					<span class="label-input100">Url for your blog image</span>
+					<input class="input100" type="text" name="blogurl" id="t3" placeholder="Please wait for Image Url to autofill" data-validate = " Url is required">
+				</div>
+					<div class="wrap-input100 ">
+					<span class="label-input100">Author Photo URL</span>
+					<input class="input100" type="text" name="web" id="authfill" placeholder="http://" data-validate = " Url is required" value="">
+				</div>
+				<div class="wrap-input100 " data-validate = "Something is required">
+					<span class="label-input100">Blog description</span>
+					<textarea class="input100" name="blogdesc" id="t5" placeholder="Enter a short description no more than 200 words..."></textarea>
+				</div>
+
+			
+				<span class="label-input100">Add More Paragraphs</span>
+				<img src="images/plus.png" style="height:50px;width:50px;margin-left:-80px;" class="show_hide" rel="#slidingDiv"><br />
+                <div id="slidingDiv">
+                <div class="wrap-input100 " data-validate = "Something is required">
+					<span class="label-input100">Paragraph 1 Text</span>
+					<textarea class="input100" name="para1text" id="t4" placeholder="Write your paragraph here..."></textarea>
+				</div>
+				<label class="file-upload-container" for="file-upload1">
+                    <input id="file-upload1" type="file" style="display:none;">
+                    Select an Image
+                  </label>
+                <div class="wrap-input100 " style="margin-top:40px;">
+					<span class="label-input100">Url for this paragraph image</span>
+					<input class="input100" type="text" name="para1url" id="parat1" placeholder="Please wait for Image Url to autofill" data-validate = " Url is required">
+				</div>
+                
+				<div class="wrap-input100 rs1-wrap-input100 " data-validate="Blog title is requsired">
+					<span class="label-input100">Please Provide a paragraph titles</span>
+					<input class="input100" type="text" name="para1title" id="t2" placeholder="Enter your paragraph Title">
+				</div>
+				<hr>
+				 <div class="wrap-input100 " data-validate = "Something is required">
+					<span class="label-input100">Paragraph 2 Text</span>
+					<textarea class="input100" name="para2text" id="t4" placeholder="Write your paragraph here..."></textarea>
+				</div>
+            <label class="file-upload-container" for="file-upload2">
+                    <input id="file-upload2" type="file" style="display:none;">
+                    Select an Image
+                  </label>
+			    <div class="wrap-input100 " style="margin-top:40px;">
+					<span class="label-input100">Url for this paragraph image</span>
+					<input class="input100" type="text" name="para2url" id="parat2" placeholder="Please wait for Image Url to autofill" data-validate = " Url is required">
+				</div>
+                
+				<div class="wrap-input100 rs1-wrap-input100 " data-validate="Blog title is required">
+					<span class="label-input100">Please Provide a title for this paragraph</span>
+					<input class="input100" type="text" name="para2title" id="t2" placeholder="Enter your paragraph Title">
+				</div>
+				<hr>
+				 <div class="wrap-input100 " data-validate = "Something is required">
+					<span class="label-input100">Paragraph 3 Text</span>
+					<textarea class="input100" name="para3text" id="t4" placeholder="Write your paragraph here..."></textarea>
+				</div>
+            <label class="file-upload-container" for="file-upload3">
+                    <input id="file-upload3" type="file" style="display:none;">
+                    Select an Image
+                  </label>
+			    <div class="wrap-input100 " style="margin-top:40px;">
+					<span class="label-input100">Url for this paragraph image</span>
+					<input class="input100" type="text" name="para3url" id="parat3" placeholder="Please wait for Image Url to autofill" data-validate = " Url is required">
+				</div>
+                
+				<div class="wrap-input100 rs1-wrap-input100" data-validate="Blog title is required">
+					<span class="label-input100">Please Provide a title for this paragraph</span>
+					<input class="input100" type="text" name="para3title" id="t2" placeholder="Enter your paragraph Title">
+				</div>
+				<hr>
+				</div><br><br>
+                <br><br>
+				
+
+				<div class="container-contact100-form-btn" style="margin-top:40px;">
+					<div class="wrap-contact100-form-btn">
+						<div class="contact100-form-bgbtn"></div>
+						<button class="contact100-form-btn" onclick="showInput();return false;">
+							Submit Info
+						</button>
+					</div>
+				</div>
+			</form>
+			<br><br>
+		</div>
+	</div>
