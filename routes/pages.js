@@ -247,14 +247,14 @@ router.post('/:id',(req,res)=>{
           var transporter = nodemailer.createTransport({
           service: 'gmail',
           auth: {
-            user: 'gokuverma94@gmail.com',
-            pass: 'Judgmentday@667788'
+            user: 'your email',
+            pass: 'your password'
           }
         });
 
         var mailOptions = {
           from: user.email,
-          to: 'gokuverma94@gmail.com',
+          to: 'your email',
           subject: 'A new blog posted by user',
           text: 'A blog was created by username '+user.username
         };
