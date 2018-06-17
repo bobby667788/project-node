@@ -9,13 +9,6 @@
         optionsVal.onclick = function(){
         setVal(this);
         };
-        $("#authput").keyup(function(){
-        update();
-        });
-
-        function update() {
-        $("#authfill").val($('#authput').val());
-        }
         
         function setVal(selectedVal){
          input.value = selectedVal.value;

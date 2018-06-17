@@ -10,9 +10,8 @@ var userschema=mongoose.Schema({
         type:String,
         required:true
     },
-    address:{
-        type:String,
-        required:true
+    authimg:{
+        type:String
     },
     email:{
         type:String,

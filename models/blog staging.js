@@ -32,6 +32,9 @@ var blogschema=mongoose.Schema({
     tag:{
         type:String
     },
+    authurl:{
+        type:String
+    },
     visible:{
         type:Boolean,
         default:false

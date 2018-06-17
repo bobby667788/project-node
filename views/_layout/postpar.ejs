@@ -32,7 +32,9 @@
                     <th>Blogtitle</th>
                     <th>Tag</th>
                     <th>Edit</th>
+                    <% if(user.admin){%>
                     <th>Delete</th>
+                    <%}%>
                     <th>View</th>
                 </tr>
             </thead>
@@ -40,7 +42,9 @@
    <%posts.forEach(function(post){%>
     
                           <tbody>
-                <tr><td><%=post.authname%></td><td><%=post.categoryname%></td><td><%=post.blogtitle%></td><td><%=post.tag%></td><td> <a href="edit/<%=post._id%>" class="btn btn-info btn-rounded">Edit</a></td><td>             <a href="delete/<%=post._id%>" class="check btn btn-danger btn-rounded">Delete</a></td><td>             <a href="viewblog/<%=post._id%>" class="btn btn-success btn-rounded">View</a></td></tr>
+                <tr><td><%=post.authname%></td><td><%=post.categoryname%></td><td><%=post.blogtitle%></td><td><%=post.tag%></td><td> <a href="edit/<%=post._id%>" class="btn btn-info btn-rounded">Edit</a></td><% if(user.admin){%>
+                <td>             <a href="delete/<%=post._id%>" class="check btn btn-danger btn-rounded">Delete</a></td><%}%>
+                <td>             <a href="viewblog/<%=post._id%>" class="btn btn-success btn-rounded">View</a></td></tr>
 
             </tbody>
        

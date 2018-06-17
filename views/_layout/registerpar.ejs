@@ -5,7 +5,7 @@
     background-size: cover;">
                  <br><br><center><h1>Create An Account</h1></center><br><br>
                   <header style="margin:2px auto;">
-                   <div style="padding:10px;margin-bottom:6%;margin:2px auto;height:600px;width:700px;">
+                   <div style="padding:10px;margin-bottom:6%;margin:2px auto;height:1250px;width:700px;">
                     <form id ="regform" method="post" action="/signup">
 						<div class="form-group">
 							<label for="name" class="cols-sm-2 control-label">Fullname:</label>
@@ -26,17 +26,18 @@
 							</div>
 						</div>
 						
-						
-							<div class="form-group">
-							<label for="name" class="cols-sm-2 control-label">Address:</label>
-							<div class="cols-sm-10">
-								<div class="input-group">
-									<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-									<input type="text" class="form-control" name="address" id="name"  placeholder="Enter your Address" />
-								</div>
-							</div>
-						</div>
+				<label class="file-upload-container" for="file-uploadx">
+                    <input id="file-uploadx" type="file" style="display:none;">
+                    Select an Image
+                  </label>
 
+				    <div class="wrap-input100 " style="margin-top:40px;">
+					<span class="label-input100">Url for your image</span>
+					<input class="input100" type="text" name="blogurl" id="newtt" placeholder="Please wait for Image Url to autofill" data-validate = " Url is required" readonly>
+				    </div>
+                    <span id="imgx">
+                        
+                    </span>
 
 						<div class="form-group">
 							<label for="email" class="cols-sm-2 control-label">Email:</label>

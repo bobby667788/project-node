@@ -24,6 +24,7 @@ app.use(express.static(path.join(__dirname,'public')));
 
 app.locals.errors=null;
 app.locals.ishome=false;
+app.locals.issignup=true;
 
 app.use(bodyParser.urlencoded({ extended: false }));
 // parse application/json
@@ -62,6 +63,13 @@ app.use(function(req,res,next){
         
     else{
        res.locals.ishome=false; 
+    }
+    if(req.url=='/signup'){
+      res.locals.issignup=true;  
+    }
+        
+    else{
+       res.locals.issignup=false; 
     }
     next();
 });

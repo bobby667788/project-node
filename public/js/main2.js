@@ -21,23 +21,30 @@
         var fileup15=document.getElementById('file-upload3');
         var tx4=document.getElementById('parat3');
     
-        var fileup154=document.getElementById('file-upload4');
-        var tx44=document.getElementById('parat4');
+        var fileupx=document.getElementById('file-uploadx');
+        var newtt=document.getElementById('newtt');
     
-        var fileup155=document.getElementById('file-upload5');
-        var tx45=document.getElementById('parat5');
-    
-        var fileup156=document.getElementById('file-upload6');
-        var tx46=document.getElementById('parat6');
-    
-        var fileup157=document.getElementById('file-upload7');
-        var tx47=document.getElementById('parat7');
-    
-        var fileup158=document.getElementById('file-upload8');
-        var tx48=document.getElementById('parat8');
-    
-        var fileup159=document.getElementById('file-upload9');
-        var tx49=document.getElementById('parat9');
+      fileupx.addEventListener('change',(event)=>{
+            var filex=event.target.files[0];
+            var formdatax=new FormData();
+            formdatax.append('file',filex);
+            formdatax.append('upload_preset',uppri12);
+
+            axios({
+                url:uri12,
+                method:'POST',
+                headers:{
+                    'Content-Type':'application/x-www-form-urlencoded'
+                },
+                data:formdatax
+            }).then((res)=>{
+                console.log(res.data.url);
+                newtt.value=res.data.url;
+                $('#imgx').html('<img src="' + res.data.url + '" style="padding:10px;margin-bottom:6%;height:300px;width:500px;"/>');
+            }).catch((err)=>{
+                console.log(err);
+            });
+        });
         
         
         fileup12.addEventListener('change',(event)=>{
@@ -80,7 +87,6 @@
             }).then((res)=>{
                 console.log(res.data.url);
                 tx2.value=res.data.url;
-                $('#imgauto1').html('<img src="' + res.data.url + '" style="padding:10px;margin-bottom:6%;height:300px;width:500px;"/>');
             }).catch((err)=>{
                 console.log(err);
             });
@@ -103,7 +109,6 @@
             }).then((res)=>{
                 console.log(res.data.url);
                 tx3.value=res.data.url;
-                $('#imgauto2').html('<img src="' + res.data.url + '" style="padding:10px;margin-bottom:6%;height:300px;width:500px;"/>');
             }).catch((err)=>{
                 console.log(err);
             });
@@ -126,139 +131,6 @@
             }).then((res)=>{
                 console.log(res.data.url);
                 tx4.value=res.data.url;
-                $('#imgauto3').html('<img src="' + res.data.url + '" style="padding:10px;margin-bottom:6%;height:300px;width:500px;"/>');
-            }).catch((err)=>{
-                console.log(err);
-            });
-        });
-    
-    fileup154.addEventListener('change',(event)=>{
-            var file154=event.target.files[0];
-            var formdata154=new FormData();
-            formdata154.append('file',file154);
-            formdata154.append('upload_preset',uppri12);
-
-            axios({
-                url:uri12,
-                method:'POST',
-                headers:{
-                    'Content-Type':'application/x-www-form-urlencoded'
-                },
-                data:formdata154
-            }).then((res)=>{
-                console.log(res.data.url);
-                tx44.value=res.data.url;
-                $('#imgauto4').html('<img src="' + res.data.url + '" style="padding:10px;margin-bottom:6%;height:300px;width:500px;"/>');
-            }).catch((err)=>{
-                console.log(err);
-            });
-        });
-    
-    fileup155.addEventListener('change',(event)=>{
-            var file155=event.target.files[0];
-            var formdata155=new FormData();
-            formdata155.append('file',file155);
-            formdata155.append('upload_preset',uppri12);
-
-            axios({
-                url:uri12,
-                method:'POST',
-                headers:{
-                    'Content-Type':'application/x-www-form-urlencoded'
-                },
-                data:formdata155
-            }).then((res)=>{
-                console.log(res.data.url);
-                tx45.value=res.data.url;
-                $('#imgauto5').html('<img src="' + res.data.url + '" style="padding:10px;margin-bottom:6%;height:300px;width:500px;"/>');
-            }).catch((err)=>{
-                console.log(err);
-            });
-        });
-    
-    fileup156.addEventListener('change',(event)=>{
-            var file156=event.target.files[0];
-            var formdata156=new FormData();
-            formdata156.append('file',file156);
-            formdata156.append('upload_preset',uppri12);
-
-            axios({
-                url:uri12,
-                method:'POST',
-                headers:{
-                    'Content-Type':'application/x-www-form-urlencoded'
-                },
-                data:formdata156
-            }).then((res)=>{
-                console.log(res.data.url);
-                tx46.value=res.data.url;
-                $('#imgauto6').html('<img src="' + res.data.url + '" style="padding:10px;margin-bottom:6%;height:300px;width:500px;"/>');
-            }).catch((err)=>{
-                console.log(err);
-            });
-        });
-    
-    fileup157.addEventListener('change',(event)=>{
-            var file157=event.target.files[0];
-            var formdata157=new FormData();
-            formdata157.append('file',file157);
-            formdata157.append('upload_preset',uppri12);
-
-            axios({
-                url:uri12,
-                method:'POST',
-                headers:{
-                    'Content-Type':'application/x-www-form-urlencoded'
-                },
-                data:formdata157
-            }).then((res)=>{
-                console.log(res.data.url);
-                tx47.value=res.data.url;
-                $('#imgauto7').html('<img src="' + res.data.url + '" style="padding:10px;margin-bottom:6%;height:300px;width:500px;"/>');
-            }).catch((err)=>{
-                console.log(err);
-            });
-        });
-    
-    fileup158.addEventListener('change',(event)=>{
-            var file158=event.target.files[0];
-            var formdata158=new FormData();
-            formdata158.append('file',file158);
-            formdata158.append('upload_preset',uppri12);
-
-            axios({
-                url:uri12,
-                method:'POST',
-                headers:{
-                    'Content-Type':'application/x-www-form-urlencoded'
-                },
-                data:formdata158
-            }).then((res)=>{
-                console.log(res.data.url);
-                tx48.value=res.data.url;
-                $('#imgauto8').html('<img src="' + res.data.url + '" style="padding:10px;margin-bottom:6%;height:300px;width:500px;"/>');
-            }).catch((err)=>{
-                console.log(err);
-            });
-        });
-    
-    fileup159.addEventListener('change',(event)=>{
-            var file159=event.target.files[0];
-            var formdata159=new FormData();
-            formdata159.append('file',file159);
-            formdata159.append('upload_preset',uppri12);
-
-            axios({
-                url:uri12,
-                method:'POST',
-                headers:{
-                    'Content-Type':'application/x-www-form-urlencoded'
-                },
-                data:formdata159
-            }).then((res)=>{
-                console.log(res.data.url);
-                tx49.value=res.data.url;
-                $('#imgauto9').html('<img src="' + res.data.url + '" style="padding:10px;margin-bottom:6%;height:300px;width:500px;"/>');
             }).catch((err)=>{
                 console.log(err);
             });

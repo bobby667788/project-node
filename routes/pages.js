@@ -21,7 +21,25 @@ function ensureAuthenticated(req,res,next){
 
 
 router.get('/',(req,res)=>{
-    res.render('index');
+    var authname=''
+    var blogtitle=''
+    var blogid=''
+    var blogurl=''
+    var blogdesc=''
+    var catname=''
+    var tag=''
+    var category=''
+    
+    res.render('index',{
+        authname:authname,
+        blogtitle:blogtitle,
+        blogid:blogid,
+        category:category,
+        blogurl:blogurl,
+        blogdesc:blogdesc,
+        catname:catname,
+        tag:tag
+    });
 });
 
 
@@ -35,11 +53,11 @@ function veri(email) {
 router.post('/signup',(req,res)=>{
     var fullname=req.body.fullname;
     var address=req.body.address;
+    var authimg=req.body.blogurl;
     var email=req.body.email;
     var password=req.body.password; 
     var username=req.body.username; 
     req.checkBody('fullname','Please provide your fullname').notEmpty();
-    req.checkBody('address','Please provide a valid address').notEmpty();
     req.checkBody('username','Please provide a username').notEmpty();
     req.checkBody('email','Please provide your email id').notEmpty();
     req.checkBody('password','Please provide a password').notEmpty();
@@ -78,6 +96,7 @@ router.post('/signup',(req,res)=>{
                     name:fullname,
                     email:email,
                     username:username,
+                    authimg:authimg,
                     address:address,
                     password:password,
                     admin:0
@@ -110,6 +129,9 @@ router.get('/signup',(req,res)=>{
 //check for valid image
 
 function checkURL(url) {
+    if(url==undefined){
+        return false
+    }
     return(url.match(/\.(jpeg|jpg|gif|png)$/) != null);
 }
 
@@ -136,14 +158,12 @@ router.get('/logout',(req,res)=>{
 
 router.post('/:id',(req,res)=>{
     var id=req.params.id;
-    req.checkBody('authname','Please provide the name of the author').notEmpty();
     req.checkBody('blogtitle','Please provide the title of the blog').notEmpty();
     req.checkBody('blogid','Please provide the id of the blog').notEmpty();
     req.checkBody('blogdesc','Please provide a description of the blog').notEmpty();
     
-    var authname=req.body.authname;
      var blogtitle=req.body.blogtitle;
-     var blogid=req.body.blogid.replace(/\s+/g,'-').toLowerCase();
+     var blogid=req.body.blogid.replace(/[&\/\\#! ,_=+()$~%.'":*?<>{}]/g,'-').toLowerCase();
      var blogurl=req.body.blogurl;
      var blogdesc=req.body.blogdesc;
     var category=req.body.category;
@@ -158,9 +178,27 @@ router.post('/:id',(req,res)=>{
     var para3text=req.body.para3text;
     var para3url=req.body.para3url;
     var para3title=req.body.para3title;
+    var para4text=req.body.para4text;
+    var para4url=req.body.para4url;
+    var para4title=req.body.para4title;
+    var para5text=req.body.para5text;
+    var para5url=req.body.para5url;
+    var para5title=req.body.para5title;
+    var para6text=req.body.para6text;
+    var para6url=req.body.para6url;
+    var para6title=req.body.para6title;
+    var para7text=req.body.para7text;
+    var para7url=req.body.para7url;
+    var para7title=req.body.para7title;
+    var para8text=req.body.para8text;
+    var para8url=req.body.para8url;
+    var para8title=req.body.para8title;
+    var para9text=req.body.para9text;
+    var para9url=req.body.para9url;
+    var para9title=req.body.para9title;
     var x;
     var errors=req.validationErrors();
-    
+
     x=checkURL(blogurl)
     if(!x){
        req.flash('danger','Please provide a valid image URL');
@@ -168,13 +206,14 @@ router.post('/:id',(req,res)=>{
            res.render('index',{
             user:user,
            errors:errors,
-           authname:authname,
+           authname:user.authname,
            blogtitle:blogtitle,
             blogid:blogid,
             blogurl:blogurl,
             blogdesc:blogdesc,
             catname:catname,
             tag:tag,
+            category:category,
             para1text:para1text,
             para1url:para1url,
             para1title:para1title,
@@ -194,7 +233,7 @@ router.post('/:id',(req,res)=>{
            res.render('index',{
             user:user,
            errors:errors,
-           authname:authname,
+           authname:user.authname,
            blogtitle:blogtitle,
             blogid:blogid,
             blogurl:blogurl,
@@ -219,7 +258,7 @@ router.post('/:id',(req,res)=>{
            res.render('index',{
             user:user,
            errors:errors,
-           authname:authname,
+           authname:user.authname,
            blogtitle:blogtitle,
             blogid:blogid,
             blogurl:blogurl,
@@ -266,22 +305,26 @@ router.post('/:id',(req,res)=>{
             console.log('Email sent: ' + info.response);
           }
         }); 
-            
-        });
-        
-        var blog=new Blog({
-           authname:authname,
+          var blog=new Blog({
+           authname:user.name,
            blogtitle:blogtitle,
             blogid:blogid,
             blogurl:blogurl,
             userid:id,
+            authurl:user.authimg,
             blogdesc:blogdesc,
             categoryname:catname,
             categoryid:category,
             tag:tag,
             paragraph:[{paratext:para1text,paraurl:para1url,paratitle:para1title},
                        {paratext:para2text,paraurl:para2url,paratitle:para2title},
-                       {paratext:para3text,paraurl:para3url,paratitle:para3title}]
+                       {paratext:para3text,paraurl:para3url,paratitle:para3title},
+                       {paratext:para4text,paraurl:para4url,paratitle:para4title},
+                      {paratext:para5text,paraurl:para5url,paratitle:para5title},
+                      {paratext:para6text,paraurl:para6url,paratitle:para6title},
+                      {paratext:para7text,paraurl:para7url,paratitle:para7title},
+                      {paratext:para8text,paraurl:para8url,paratitle:para8title},
+                      {paratext:para9text,paraurl:para9url,paratitle:para9title}]
         });
         blog.save((err)=>{
             if (err){
@@ -289,7 +332,10 @@ router.post('/:id',(req,res)=>{
             }
             req.flash('success','Blog Created');
             res.redirect('/');
+        });   
         });
+        
+       
     }      
 });
 
