@@ -57,6 +57,9 @@ router.post('/signup',(req,res)=>{
     var email=req.body.email;
     var password=req.body.password; 
     var username=req.body.username; 
+    if(authimg==''){
+        authimg='http://www.recipublic.com/assets/empty_user-64c8b958119d4e6577491dc53c8b31df46f01db36f6b8b893534cb5cf0bd2b8a.png'
+    }
     req.checkBody('fullname','Please provide your fullname').notEmpty();
     req.checkBody('username','Please provide a username').notEmpty();
     req.checkBody('email','Please provide your email id').notEmpty();
