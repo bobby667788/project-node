@@ -126,7 +126,13 @@ router.post('/signup',(req,res)=>{
 });
 
 router.get('/signup',(req,res)=>{
-    res.render('signup');
+    if(res.locals.user){
+        res.redirect('/')
+    }
+    else{
+        res.render('signup');
+    }
+    
 });
 
 //check for valid image
@@ -139,7 +145,13 @@ function checkURL(url) {
 }
 
 router.get('/login',(req,res)=>{
-    res.render('login');
+    if(res.locals.user){
+        res.redirect('/')
+    }
+    else{
+        res.render('login');
+    }
+   
 });
 
 router.post('/login',(req,res,next)=>{
